@@ -1,15 +1,17 @@
-# quasijazzer
-Basic musical instrument definitions for Pulsar a Lisp Scheme Music Sequencer. 
+# QUASIJAZZER-BAND
 
-The "quasijazzer" is a Scheme program which defines a set of music instruments for Pulsar Music Sequencer.
+Quasijazzer-Band is a library which consists basic musical instrument
+definitions for Quasijazzar Project which is developped on [Pulsar a Lisp
+Scheme Music Sequencer](https://github.com/lisp-scheme-music/pulsar). 
 
-This program depends on systems following :
+This library depends on following applications :
 
 - Calf Studio Gear
 - Hydrogen Drum Machine
 - ZynAddSubFx
 
-This program can start up several instruments and connect these instruments properly.
+This library offers functions to start up several instruments and connect these
+instruments properly and shut down all the instruments as well.
 
 ### (session-start)
 Call (session-start) function to start a Pulsar programming session. 
@@ -17,6 +19,5 @@ This function causes starting up several musical instruments.
 
 ### (session-end)
 Call (session-start) function to end the Pulsar programming session.
-This function shuts down the instruments which have been started up since then.
-
+This function shuts down the instruments which have been started up so far.
 
