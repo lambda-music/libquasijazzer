@@ -1,0 +1,27 @@
+<?xml version="1.1" encoding="utf-8"?>
+<rack><plugin type="fluidsynth" instance-name="fluidsynth" output-index="1" midi-index="1">
+<preset bank="0" program="0" plugin="fluidsynth" name="">
+  <param name="master" value="0.5" />
+  <param name="interpolation" value="2" />
+  <param name="reverb" value="1" />
+  <param name="chorus" value="1" />
+  <var name="preset_key_set">0</var>
+  <var name="preset_key_set10">-1</var>
+  <var name="preset_key_set11">0</var>
+  <var name="preset_key_set12">0</var>
+  <var name="preset_key_set13">0</var>
+  <var name="preset_key_set14">0</var>
+  <var name="preset_key_set15">0</var>
+  <var name="preset_key_set16">0</var>
+  <var name="preset_key_set2">0</var>
+  <var name="preset_key_set3">0</var>
+  <var name="preset_key_set4">0</var>
+  <var name="preset_key_set5">0</var>
+  <var name="preset_key_set6">0</var>
+  <var name="preset_key_set7">0</var>
+  <var name="preset_key_set8">0</var>
+  <var name="preset_key_set9">0</var>
+  <var name="soundfont">/home/ats/Documents/literary works/20191019.basic-kit/quasijazzer/res/Numbers3.20170913.sf2</var>
+</preset>
+</plugin>
+</rack>

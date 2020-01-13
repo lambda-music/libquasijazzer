@@ -1,0 +1,46 @@
+<?xml version="1.1" encoding="utf-8"?>
+<rack><plugin type="fluidsynth" instance-name="fluidsynth" output-index="1" midi-index="1">
+<preset bank="0" program="0" plugin="fluidsynth" name="">
+  <param name="master" value="0.5" />
+  <param name="interpolation" value="2" />
+  <param name="reverb" value="1" />
+  <param name="chorus" value="1" />
+  <var name="preset_key_set">32</var>
+  <var name="preset_key_set10">16384</var>
+  <var name="preset_key_set11">0</var>
+  <var name="preset_key_set12">0</var>
+  <var name="preset_key_set13">0</var>
+  <var name="preset_key_set14">0</var>
+  <var name="preset_key_set15">0</var>
+  <var name="preset_key_set16">0</var>
+  <var name="preset_key_set2">1</var>
+  <var name="preset_key_set3">3</var>
+  <var name="preset_key_set4">0</var>
+  <var name="preset_key_set5">6</var>
+  <var name="preset_key_set6">0</var>
+  <var name="preset_key_set7">0</var>
+  <var name="preset_key_set8">0</var>
+  <var name="preset_key_set9">0</var>
+  <var name="soundfont">/home/ats/Documents/literary works/20191019.basic-kit/quasijazzer/res/FluidR3 GM.sf2</var>
+</preset>
+</plugin>
+<plugin type="exciter" instance-name="exciter" input-index="1" output-index="3">
+<preset bank="0" program="0" plugin="exciter" name="">
+  <param name="bypass" value="0" />
+  <param name="level_in" value="1" />
+  <param name="level_out" value="1.26225" />
+  <param name="amount" value="10.0422" />
+  <param name="meter_in" value="1.37213e-08" />
+  <param name="meter_out" value="1.73197e-08" />
+  <param name="clip_in" value="0" />
+  <param name="clip_out" value="0" />
+  <param name="drive" value="10" />
+  <param name="blend" value="-10" />
+  <param name="meter_drive" value="0" />
+  <param name="freq" value="5077.72" />
+  <param name="listen" value="0" />
+  <param name="ceil_active" value="0" />
+  <param name="ceil" value="11599.6" />
+</preset>
+</plugin>
+</rack>
