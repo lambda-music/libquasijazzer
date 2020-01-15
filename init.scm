@@ -111,12 +111,12 @@
 (define all-newp '() )
 
 (define (session-start)
-  (set! all-newp (xcons all-newp (newp "hydrogen" "--song" "quasijazzer/h2-drumkit.h2song" )))
-  (set! all-newp (xcons all-newp (newp "calfjackhost" "--client" "calf-counter" "--load" "quasijazzer/calf-counter.xml" )))
-  (set! all-newp (xcons all-newp (newp "calfjackhost" "--client" "calf-fluidsynth-bass" "--load" "quasijazzer/calf-bass.xml" )))
-  (set! all-newp (xcons all-newp (newp "calfjackhost" "--client" "calf-fluidsynth" "--load" "quasijazzer/calf-fluidsynth.xml" )))
-  (set! all-newp (xcons all-newp (newp "calfjackhost" "--client" "calf-reverb" "--load" "quasijazzer/calf-reverb.xml" )))
-  (set! all-newp (xcons all-newp (newp "zynaddsubfx" "--input" "jack" "--output" "jack" "--named" "quasijazzer0" "--load=quasijazzer/zynaddsubfx.xmz" )))
+  (set! all-newp (xcons all-newp (newp "hydrogen" "--song" "quasijazzer-band/h2-drumkit.h2song" )))
+  (set! all-newp (xcons all-newp (newp "calfjackhost" "--client" "calf-counter" "--load" "quasijazzer-band/calf-counter.xml" )))
+  (set! all-newp (xcons all-newp (newp "calfjackhost" "--client" "calf-fluidsynth-bass" "--load" "quasijazzer-band/calf-bass.xml" )))
+  (set! all-newp (xcons all-newp (newp "calfjackhost" "--client" "calf-fluidsynth" "--load" "quasijazzer-band/calf-fluidsynth.xml" )))
+  (set! all-newp (xcons all-newp (newp "calfjackhost" "--client" "calf-reverb" "--load" "quasijazzer-band/calf-reverb.xml" )))
+  (set! all-newp (xcons all-newp (newp "zynaddsubfx" "--input" "jack" "--output" "jack" "--named" "quasijazzer0" "--load=quasijazzer-band/zynaddsubfx.xmz" )))
   
   (sleep 5000)  
   (open          "pulsar" )
