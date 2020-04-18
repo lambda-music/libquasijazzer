@@ -88,20 +88,21 @@
             ) drumkit )
 
 
-
 ; incremental keywords
-(if (kawapad-present?)
-  (let ((link (lambda(x y)
-                (add-incremental-keyword (car x) (car y)))))
-    (let ((last-elem #f))
-      (for-each (lambda (curr-elem)
-                  (if last-elem
-                    ;then
-                    (link last-elem curr-elem)
-                    ;else
-                    )
-                  (set! last-elem curr-elem)) drumkit)
-      (link (last drumkit ) (first drumkit)))))
+(define (session-init #!optional kawapad)
+  (if kawapad
+    (let* ((link (lambda(x y)
+                   (kawapad:textual-increment:add-incremental-symbol (car x) (car y)))))
+      (let ((last-elem #f))
+        (for-each (lambda (curr-elem)
+                    (if last-elem
+                      ;then
+                      (link last-elem curr-elem)
+                      ;else
+                      )
+                    (set! last-elem curr-elem)) drumkit)
+        (link (last drumkit ) (first drumkit))))))
+
 
 (define (define-if-not-exists k v)
   (if (environment-bound? (interaction-environment) k )
