@@ -1,5 +1,7 @@
+(import (lamu lang))
 (import (srfi 1))
 (import (kawa pprint))
+(import (lamu evaluators))
 
 (use "h2quasijazzer.scm")
 
@@ -16,16 +18,14 @@
       (eval (list 'define k (list 'quote v)))))
 
 (define-if-not-exists 'all-newp '() )
+
 (define (clear-newp)
   (for-each (lambda (x) (kilp x) ) all-newp )
   (set! all-newp '() )
   (sleep 1000))
+
 (define (add-newp v)
   (set! all-newp (xcons all-newp v)))
-
-
-(import (lamu procs))
-(import (lamu evaluators))
 
 
 (define (session-start)
@@ -65,13 +65,11 @@
   (connect "zynaddsubfx_quasijazzer0:out_2" "system:playback_2")
   (disconnect "Hydrogen:out_L" "system:playback_1")
   (disconnect "Hydrogen:out_R" "system:playback_2")
-  (play)
-  )
+  (play))
 
 (define (session-end)
   (clear-newp)
   (close))
-
 
 
 
