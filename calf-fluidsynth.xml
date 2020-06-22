@@ -21,7 +21,7 @@
   <var name="preset_key_set7">0</var>
   <var name="preset_key_set8">0</var>
   <var name="preset_key_set9">0</var>
-  <var name="soundfont">./quasijazzer-band/res/FluidR3 GM.sf2</var>
+  <var name="soundfont">res/FluidR3 GM.sf2</var>
 </preset>
 </plugin>
 </rack>

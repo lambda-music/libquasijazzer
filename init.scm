@@ -106,25 +106,36 @@
 
 (define (define-if-not-exists k v)
   (if (environment-bound? (interaction-environment) k )
-      (eval (list 'define k (list 'quote v)) )
-      #f))
+      #f
+      (eval (list 'define k (list 'quote v)))))
 
-(define all-newp '() )
+(define-if-not-exists 'all-newp '() )
+(define (clear-newp)
+  (for-each (lambda (x) (kilp x) ) all-newp )
+  (set! all-newp '() )
+  (sleep 1000))
+(define (add-newp v)
+  (set! all-newp (xcons all-newp v)))
+
+
+(import (lamu procs))
+(import (lamu evaluators))
+
 
 (define (session-start)
-  (set! all-newp (xcons all-newp (newp "hydrogen" "--song" "quasijazzer-band/h2-drumkit.h2song" )))
-  (set! all-newp (xcons all-newp (newp "calfjackhost" "--client" "calf-counter" "--load" "quasijazzer-band/calf-counter.xml" )))
-  (set! all-newp (xcons all-newp (newp "calfjackhost" "--client" "calf-fluidsynth-bass" "--load" "quasijazzer-band/calf-bass.xml" )))
-  (set! all-newp (xcons all-newp (newp "calfjackhost" "--client" "calf-fluidsynth" "--load" "quasijazzer-band/calf-fluidsynth.xml" )))
-  (set! all-newp (xcons all-newp (newp "calfjackhost" "--client" "calf-reverb" "--load" "quasijazzer-band/calf-reverb.xml" )))
-  (set! all-newp (xcons all-newp (newp "zynaddsubfx" "--input" "jack" "--output" "jack" "--named" "quasijazzer0" "--load=quasijazzer-band/zynaddsubfx.xmz" )))
+  (add-newp (newp dir: #!current-dir "hydrogen"     "--song"   "./h2-drumkit.h2song" ))
+  (add-newp (newp dir: #!current-dir "calfjackhost" "--client" "calf-counter" "--load" "./calf-counter.xml" ) )
+  (add-newp (newp dir: #!current-dir "calfjackhost" "--client" "calf-fluidsynth-bass" "--load" "./calf-bass.xml" ))
+  (add-newp (newp dir: #!current-dir "calfjackhost" "--client" "calf-fluidsynth" "--load" "./calf-fluidsynth.xml" ))
+  (add-newp (newp dir: #!current-dir "calfjackhost" "--client" "calf-reverb" "--load" "./calf-reverb.xml" ))
+  (add-newp (newp dir: #!current-dir "zynaddsubfx" "--input" "jack" "--output" "jack" "--named" "quasijazzer0" "--load=./zynaddsubfx.xmz" ))
   
   (sleep 5000)  
   (open          "pulsar" )
   (open-output   "h2" "counter" "fluidsynth" "fluidsynth-bass" "zyn" )
   (open-input    "i0"  "i1"  )
   (set-tempo 150)
-  (putt (newt 'main 1 ) 'i )
+  (putt (newt 'main 1 (synct 'i))  )
   (connect  "pulsar:h2"              "hydrogen-midi:RX" )
   (connect  "pulsar:counter"         "calf-counter:fluidsynth MIDI In" )
   (connect  "pulsar:fluidsynth"      "calf-fluidsynth:fluidsynth MIDI In" )
@@ -152,9 +163,7 @@
   )
 
 (define (session-end)
-  (for-each (lambda (x) (kilp x) ) all-newp )
-  (set! all-newp '() )
-  (sleep 1000)
+  (clear-newp)
   (close))
 
 
