@@ -12,29 +12,14 @@
     (init-h2quasijazzer-incremental-symbols kawapad h2quasijazzer-drumkit)))
 
 
-(define (define-if-not-exists k v)
-  (if (environment-bound? (interaction-environment) k )
-      #f
-      (eval (list 'define k (list 'quote v)))))
-
-(define-if-not-exists 'all-newp '() )
-
-(define (clear-newp)
-  (for-each (lambda (x) (kilp x) ) all-newp )
-  (set! all-newp '() )
-  (sleep 1000))
-
-(define (add-newp v)
-  (set! all-newp (xcons all-newp v)))
-
 
 (define (session-start)
-  (add-newp (newp dir: #!current-dir "hydrogen"     "--song"   "./h2-drumkit.h2song" ))
-  (add-newp (newp dir: #!current-dir "calfjackhost" "--client" "calf-counter" "--load" "./calf-counter.xml" ) )
-  (add-newp (newp dir: #!current-dir "calfjackhost" "--client" "calf-fluidsynth-bass" "--load" "./calf-bass.xml" ))
-  (add-newp (newp dir: #!current-dir "calfjackhost" "--client" "calf-fluidsynth" "--load" "./calf-fluidsynth.xml" ))
-  (add-newp (newp dir: #!current-dir "calfjackhost" "--client" "calf-reverb" "--load" "./calf-reverb.xml" ))
-  (add-newp (newp dir: #!current-dir "zynaddsubfx" "--input" "jack" "--output" "jack" "--named" "quasijazzer0" "--load=./zynaddsubfx.xmz" ))
+  (newp-add (newp dir: #!current-dir "hydrogen"     "--song"   "./h2-drumkit.h2song" ))
+  (newp-add (newp dir: #!current-dir "calfjackhost" "--client" "calf-counter" "--load" "./calf-counter.xml" ) )
+  (newp-add (newp dir: #!current-dir "calfjackhost" "--client" "calf-fluidsynth-bass" "--load" "./calf-bass.xml" ))
+  (newp-add (newp dir: #!current-dir "calfjackhost" "--client" "calf-fluidsynth" "--load" "./calf-fluidsynth.xml" ))
+  (newp-add (newp dir: #!current-dir "calfjackhost" "--client" "calf-reverb" "--load" "./calf-reverb.xml" ))
+  (newp-add (newp dir: #!current-dir "zynaddsubfx" "--input" "jack" "--output" "jack" "--named" "quasijazzer0" "--load=./zynaddsubfx.xmz" ))
   
   (sleep 5000)  
   (open          "pulsar" )
@@ -68,7 +53,7 @@
   (play))
 
 (define (session-end)
-  (clear-newp)
+  (newp-clear)
   (close))
 
 
